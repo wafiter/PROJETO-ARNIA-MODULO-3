@@ -5,9 +5,9 @@ export interface RepUser extends Document {
   email: string;
   password: string;
   jewelsAmount:  {
-    power: { type: Number, default: 0 },
-    mind: { type: Number, default: 0 },
-    space: { type: Number, default: 0 },
+    power:  Number,
+    mind: Number ,
+    space: Number
   };
   products: Schema.Types.ObjectId[];
   favoriteProducts: Schema.Types.ObjectId[];

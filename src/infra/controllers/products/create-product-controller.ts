@@ -7,7 +7,7 @@ export class CreateProductController {
 
     async handler(req: Request ,res: Response) {
         const { body } = req
-        console.log(req.id)
+        
         const bodyIsValid = await createProductBodyValidation(body)
 
         if (!bodyIsValid.isValid) {
@@ -16,9 +16,10 @@ export class CreateProductController {
           try {
             const data = {
               ...body,
-              adminId: req.id
+              id: req.params.id
             }
-            const result = await this.usecase.execute(data);
+            await this.usecase.execute(data);
+            
             return res.status(201).json({message: "product create"});
           } catch (error: any) {
             return res.status(400).json({ message: error.message });

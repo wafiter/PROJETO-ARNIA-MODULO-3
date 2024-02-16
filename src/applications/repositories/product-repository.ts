@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { RepProduct } from "../../entities/product";
 
 export interface ProductData {
@@ -8,7 +9,9 @@ export interface ProductData {
     photo: string,
 }
 
-export interface ProductRepository { 
+export interface ProductRepository {
+    updateProduct(id: string, product: RepProduct): void; 
     create(productData: ProductData): Promise<void>
     findAll(): Promise<RepProduct[]>
+    findById(id: string): Promise<RepProduct | null>
 }

@@ -16,8 +16,8 @@ export class CreateUserController {
     }
 
     try {
-      const usecase = await this.usecase.execute(body);
-      return res.status(201).json();
+      await this.usecase.execute(body);
+      return res.status(201).json({mensage: "create"});
     } catch (error: any) {
       return res.status(400).json({ message: error.message });
     }

@@ -4,7 +4,7 @@ import {
 } from "../../repositories/product-repository";
 
 export interface Data {
-  adminId: string, 
+  id: string, 
   name:string,
   value: string,
   amount: number,
@@ -19,15 +19,17 @@ export class CreateProductUseCase {
     private admRepository: AdminRepository
   ) {}
 
-  async execute({ adminId, name, value, amount, description, photo }: Data) {
+  async execute({ id, name, value, amount, description, photo }: Data) {
     
-    const adm = await this.admRepository.findByID(adminId);
-    console.log(adminId)
+    const adm = await this.admRepository.findByID(id);
+    
     if (!adm) {
       throw new Error("This user is not an admin");
     }
 
     const productData = { name, value, amount, description, photo }
+
+    
     
     const result = await this.productRepository.create(productData);
 

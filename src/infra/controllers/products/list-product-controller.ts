@@ -5,11 +5,10 @@ export class ListProductController {
 
     constructor(private usecase: ListProductsUseCase) {}
 
-    async handler (req: Request, res: Response){
-
-       const { id } = req       
+    async handler (req: Request, res: Response){       
+              
         try {
-            const result = await this.usecase.execute(id as string)
+            const result = await this.usecase.execute()
             return res.json({products: result})
         } catch (error) {
             return res.status(400).json({message: error.message})
