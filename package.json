@@ -4,6 +4,8 @@
   "description": "projeto de final do  modulo 3",
   "main": "index.js",
   "scripts": {
+    "build": "tsup src",
+    "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts"
   },
   "author": "wafiter",
