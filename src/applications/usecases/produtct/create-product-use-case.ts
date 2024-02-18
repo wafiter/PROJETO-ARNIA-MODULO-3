@@ -9,8 +9,7 @@ export interface Data {
   value: string,
   amount: number,
   description: string,
-  photo: string,
-}
+  photo: string,}
 
 
 export class CreateProductUseCase {
@@ -30,7 +29,7 @@ export class CreateProductUseCase {
     const productData = { name, value, amount, description, photo }
 
     
-    
+    console.log(productData)
     const result = await this.productRepository.create(productData);
 
     return result;

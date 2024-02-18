@@ -1,11 +1,11 @@
-import { Schema, model, Document, ObjectId } from "mongoose";
+import { Schema, model, Document, } from "mongoose";
 
 export interface RepProduct extends Document {
     name: string,
     value: number,
     amount: number,
     description: string,
-    photo?: string | null | undefined
+    photo: string
 }
 
 const ProductSchema = new Schema(
@@ -14,7 +14,7 @@ const ProductSchema = new Schema(
     value: { type: Number, required: true },
     amount: { type: Number, required: true },
     description: { type: String, required: true },
-    photo: { type: String },
+    photo: { type: String, required: true },
   },
   { timestamps: true }
 );

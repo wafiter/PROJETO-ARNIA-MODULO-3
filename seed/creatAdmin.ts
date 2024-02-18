@@ -9,7 +9,7 @@ async function run () {
     await AdminModel.create({
         name: "Admin",
         email: "wafiter@gmail.com",
-        password: await hasher.encrypt("x1x2x3")
+        password: await hasher.encrypt(process.env.ADMKEY as string)
 
     })
     

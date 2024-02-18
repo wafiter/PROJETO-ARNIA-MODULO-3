@@ -1,74 +1,121 @@
+API de premiações
 
-**MODELOS**
+Esta é uma API para gerenciamento de usuários, produtos em um sistema de resgate de produtos a troco joias.
 
-```plaintext
-Admin 
-- Name: string
-- Email: string
-- Password: string
+Instalação
+Para começar, clone este repositório e instale as dependências:
 
-Product
-- Name: string
-- Value: number
-- Amount: number
-- Description: string
-- Photo: string
+git clone https://github.com/wafiter/PROJETO-ARNIA-MODULO-3
+cd PROJETO-ARNIA-MODULO-3
+npm install
 
-User
-- Name: string
-- Email: string
-- Password: string
-- jewelsAmount: number
-- Products: Product[]
-- FavoriteProducts: Product[]
-- Photo: string
-```
+Uso
+A API disponibiliza as seguintes rotas:
 
-**CENÁRIOS DE USO**
+1. Cria um novo usuário.
 
-1. **Cadastro de Usuário**
-   - Informações necessárias: nome, e-mail, senha, foto
-   - Não permitir o cadastro se um usuário com o mesmo e-mail já existir
-   - Criptografar a senha antes de armazenar no banco de dados
+Endpoint: POST /users
 
-2. **Login de Usuário**
-   - Informações necessárias: e-mail e senha
-   - Não gerar um token se não existir um usuário com o e-mail fornecido
-   - Não gerar um token se a senha enviada não for compatível com a do banco de dados
-   - Gerar um token e retornar se as credenciais estiverem corretas
+Parâmetros:
 
-3. **Login de Admin**
-   - Informações necessárias: e-mail e senha
-   - Não gerar um token se não existir um admin com o e-mail fornecido
-   - Não gerar um token se a senha enviada não for compatível com a do banco de dados
-   - Gerar um token e retornar se as credenciais estiverem corretas
+name (string): Nome do usuário.
+email (string): E-mail do usuário.
+password (string): Senha do usuário.
+photo (arquivo): Foto do usuário (opcional)
 
-4. **Visualizar Usuário Logado (ROTA PRIVADA)**
-   - Retornar os dados do usuário logado
+Exemplo de uso:
 
-5. **Cadastro de Produto (ROTA PRIVADA - ADMIN)**
-   - Informações necessárias: nome, valor, quantidade, descrição e foto
-   - Não permitir o envio se o usuário que está executando a ação não for um administrador
+"name": "John Doe"
+"email": "johndoe@example.com"
+"password": "senha123"
+"photo": "caminho/para/foto.jpg"
 
-6. **Edição de Produto (ROTA PRIVADA - ADMIN)**
-   - Informações necessárias: nome, valor, quantidade, descrição e foto
-   - Não permitir o envio se o usuário que está executando a ação não for um administrador
+2. Envio de Joia
 
-7. **Listar Todos os Produtos (ROTA PRIVADA)**
-   - Deve listar os produtos com quantidade maior que 0
+Envia uma joia para um usuário. (Rota privada para admin)
 
-8. **Buscar Produto por ID (ROTA PRIVADA)**
-   - Deve ser informado: id
-   - Deve retornar o produto caso encontrado
+Endpoint: POST /send-jew
 
-11. **Enviar Joia para Usuário (ROTA PRIVADA - ADMIN)**
-    - Informações necessárias: quantidade de joia, ID do usuário
-    - Não permitir o envio se o usuário não existirem
-    - Não permitir o envio se o usuário que está executando a ação não for um administrador
+Parâmetros:
 
-12. **Resgatar Produto (ROTA PRIVADA)**
-    - Informações necessárias: ID do produto, ID do usuário
-    - Não permitir o resgate se o produto ou o usuário não existirem
-    - Não permitir o resgate se o usuário não tiver joias suficientes
-    - Decrementar o valor do produto pela quantidade de joias
-    - Decrementar a quantidade do produto
+userId (string): ID do usuário.
+jewel (string): Nome da joia.
+3. Login de Usuário
+
+Loga um usuário no sistema.
+
+Endpoint: POST /login
+
+Parâmetros:
+
+email (string): E-mail do usuário.
+password (string): Senha do usuário.
+
+4. Login de Admin
+
+Loga apenas administradores.
+
+Endpoint: POST /login/admin
+
+Parâmetros:
+
+email (string): E-mail do admin.
+password (string): Senha do admin.
+
+5. Cadastro de Produtos
+
+Cadastra um produto no banco.
+
+Endpoint: POST /products
+
+Parâmetros:
+
+name (string): Nome do produto.
+value (number): Valor do produto.
+amount (number): Quantidade disponível do produto.
+description (string): Descrição do produto.
+photo (string): Caminho da foto do produto.
+
+6. Edição de Produto
+
+Edita um produto existente.
+
+Endpoint: POST /edit-product
+
+Parâmetros:
+
+_id (string): ID do produto existente.
+name (string): Novo nome do produto.
+value (number): Novo valor do produto.
+amount (number): Nova quantidade disponível do produto.
+description (string): Nova descrição do produto.
+photo (string): Novo caminho da foto do produto.
+
+7. Resgatar um Produto
+
+Usuário resgata um produto, se tiver saldo suficiente.
+
+Endpoint: POST /reedem
+
+Parâmetros:
+
+productId (string): ID do produto.
+price (number): Preço do produto.
+
+8. Lista Todos Produtos
+Lista todos os produtos.
+
+Endpoint: GET /product-list
+
+9. Retornar um Produto Específico
+Retorna um produto específico.
+
+Endpoint: GET /product/:productId
+
+10. Retorna Usuário Logado
+
+Retorna o usuário logado.
+
+Endpoint: GET /me
+Autor
+Criado por Wafiter Venancio.

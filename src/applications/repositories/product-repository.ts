@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+
 import { RepProduct } from "../../entities/product";
 
 export interface ProductData {

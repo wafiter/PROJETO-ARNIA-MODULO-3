@@ -5,6 +5,7 @@ export async function createUserBodyValidation (body: any) {
     name: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().required(),
+    photo: yup.string()
   });
   try {
     await bodyType.validate(body);

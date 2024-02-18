@@ -1,5 +1,5 @@
 import "dotenv/config"
-import { app } from "./infra/http (rotas)/server";
+import { app } from "./infra/http/server";
 import { Database } from "./infra/database/database";
 
 Database.connect()

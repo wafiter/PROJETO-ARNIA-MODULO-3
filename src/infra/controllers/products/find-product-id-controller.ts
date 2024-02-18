@@ -1,8 +1,6 @@
 import { Request, Response, } from "express";
 import { FindByIdUseCase } from "../../../applications/usecases/produtct/find-product-id-use-case";
 
-
-
 export class FindProductIdController { 
 
     constructor(private usecase: FindByIdUseCase) {}

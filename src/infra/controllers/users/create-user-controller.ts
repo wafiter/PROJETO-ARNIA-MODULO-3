@@ -7,7 +7,9 @@ export class CreateUserController {
   constructor(private usecase: CreateUserUseCase) {}
 
   async handler(req: Request, res: Response) {
-    const { body } = req;
+    
+    const body = { ...req.body, photo: req.file?.filename };
+    
 
     const bodyIsValid = await createUserBodyValidation(body);
 

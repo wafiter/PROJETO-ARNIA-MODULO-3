@@ -1,6 +1,5 @@
 import { Request, Response, } from "express";
 import { ListProductsUseCase } from "../../../applications/usecases/produtct/list-products-use-case";
-
 export class ListProductController { 
 
     constructor(private usecase: ListProductsUseCase) {}

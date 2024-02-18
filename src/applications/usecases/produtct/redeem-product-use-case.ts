@@ -1,8 +1,5 @@
-
-
 import { ProductRepository } from "../../repositories/product-repository";
 import { UserRepository } from "../../repositories/user-repository";
-
 export class RedeemProductUseCase {
     
     constructor(
@@ -11,9 +8,7 @@ export class RedeemProductUseCase {
       ) {}
 
     async execute(userId: string, productId: string, price: number) {
-
-        console.log(productId, userId, price)
-
+      
         const userExist = await this.userRepository.findById(userId);
         const productExist = await this.productRepository.findById(productId);
 

@@ -1,7 +1,6 @@
 import { RepProduct } from "../../../entities/product";
 import { AdminRepository } from "../../repositories/admin-repository";
 import { ProductRepository } from "../../repositories/product-repository";
-
 export class EditProductUseCase {
     
     constructor(
@@ -31,20 +30,9 @@ export class EditProductUseCase {
       } catch (error) {
         throw new Error(error);
       }
-         
-        
-        
-
-        
+                
+                
     }
     
 }
 
-
-/**export interface RepProduct extends Document {
-    name: string,
-    value: number,
-    amount: number,
-    description: string,
-    photo?: string | null | undefined
-} */

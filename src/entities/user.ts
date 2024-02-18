@@ -11,7 +11,7 @@ export interface RepUser extends Document {
   };
   products: Schema.Types.ObjectId[];
   favoriteProducts: Schema.Types.ObjectId[];
-  photo: string;
+  photo?: string;
 }
 
 export const UserSchema = new Schema<RepUser>(

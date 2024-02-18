@@ -7,7 +7,8 @@ export class EditProductController {
 
     async handler(req: Request ,res: Response) {
         const adminId = req.params.id
-        const { body } = req
+
+        const body = { ...req.body, photo: req.file?.filename }
         
         const bodyIsValid = await editProductBodyValidation(body)
 
